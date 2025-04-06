@@ -12,7 +12,9 @@
 
 论文：https://arxiv.org/pdf/1609.06038
 
-参数选择和调度器参考了这个代码库 https://github.com/coetaur0/ESIM，但模型代码部分是自己实现的
+参数选择和调度器参考了这个代码库 https://github.com/coetaur0/ESIM
+
+但模型代码部分是自己实现的
 
 使用了pos tokenizer，focus loss（支持选择不同tokenizer和loss fn进行训练）并用gird search做超参数比较，目前最优：
 
@@ -39,6 +41,8 @@ Epoch [20/30], Train Loss=0.4609, Acc=0.8467, Dev Loss=0.4965, Acc=0.8071, F1=0.
 基于deberta-v3-base微调，输出层接入lstm -> attention layer -> full connect layer for classification （详见代码）
 
 参考论文 https://arxiv.org/abs/2006.03654
+
+模型原地址 https://huggingface.co/microsoft/deberta-v3-base
 
 **再找1-2篇基于bert+lstm文本分类的**
 
