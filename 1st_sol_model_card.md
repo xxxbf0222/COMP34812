@@ -33,12 +33,12 @@ This model implements a variant of the [Enhanced Sequential Inference Model ESIM
 
 ### Model Resources
 
-This model implements a variant of the [Enhanced Sequential Inference Model ESIM, (Chen et al., 2016)](https://arxiv.org/pdf/1609.06038), since the paper was published very early (2016), the original code base used python 2, so we also checked [@coetaur0 's ESIM code base](https://arxiv.org/pdf/1609.06038), which rewrote the ESIM architecture using PyTorch, and we referred to this code base to determine the learning rate scheduler and the initial training parameter range. We also used [Focus Loss](TODO: cite focus loss paper here) as an optional loss function as a comparasion.
+This model implements a variant of the [Enhanced Sequential Inference Model ESIM, (Chen et al., 2016)](https://arxiv.org/pdf/1609.06038), since the paper was published very early (2016), the original code base used python 2, so we also checked [@coetaur0 's ESIM code base](https://arxiv.org/pdf/1609.06038), which rewrote the ESIM architecture using PyTorch, and we referred to this code base to determine the learning rate scheduler and the initial training parameter range. We also used [Focus Loss](https://arxiv.org/pdf/1708.02002v2) as an optional loss function as a comparasion.
 <!-- Provide links where applicable. -->
 
 - **Repository:** https://github.com/coetaur0/ESIM
 - **Paper or documentation:** https://arxiv.org/pdf/1609.06038
-- **Focus Loss:** TODO: cite focus loss paper here
+- **Focus Loss:** https://arxiv.org/pdf/1708.02002v2
 
 ## Training Details
 
@@ -114,7 +114,7 @@ The development set (dev.csv) is used for indecating model performances, which d
       - macro_f1
       - weighted_macro_precision
       - weighted_macro_recall
-      - ** weighted_mmacro_f1 ** 
+      - **weighted_mmacro_f1** 
       (performance indecator in training process)
       - matthews_corrcoef
 
@@ -122,14 +122,13 @@ The development set (dev.csv) is used for indecating model performances, which d
 TODO:
 
 Best model performance:
-
       - accuracy_score
       - macro_precision
       - macro_recall
       - macro_f1
       - weighted_macro_precision
       - weighted_macro_recall
-      - ** weighted_mmacro_f1 **
+      - **weighted_mmacro_f1**
       - matthews_corrcoef
 
 ## Technical Specifications
@@ -137,9 +136,9 @@ Best model performance:
 ### Hardware
 
 
-      - RAM: --------------------------at least 4 GB
-      - Storage: ------------------------------at least 1GB,
-      - GPU: ----------------------------- RTX4080 LAPTOP (12G)
+      - RAM: at least 4 GB
+      - Storage: at least 1GB,
+      - GPU: RTX4080 LAPTOP (12G)
 
 ### Software
 
