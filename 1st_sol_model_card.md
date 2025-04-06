@@ -13,8 +13,7 @@ repo: https://github.com/xxxbf0222/COMP34812
 
 <!-- Provide a quick summary of what the model is/does. -->
 
-This is a classification model based on the ESIM architecture that was trained to detect whether a piece of evidence supports or contradicts a given claim.
-
+This is a claim-evidence classification model based on the ESIM architecture that was trained to detect whether a piece of evidence is relevant to a given claim.
 
 ## Model Details
 
@@ -26,7 +25,7 @@ This model implements a variant of the Enhanced Sequential Inference Model (ESIM
 
 - **Developed by:** Fan Mo and Zixiao Nong
 - **Language(s):** English
-- **Model type:** Supervised
+- **Model type:** Supervised-learning without using Transformer architecture
 - **Model architecture:** ESIM-inspired BiLSTM with Attention
 - **Finetuned from model [optional]:** None (Uses pretrained word2vec-google-news-300 embeddings with POS tokenizer)
 
@@ -43,7 +42,7 @@ This model implements a variant of the Enhanced Sequential Inference Model (ESIM
 
 <!-- This is a short stub of information on the training data that was used, and documentation related to data pre-processing or additional filtering (if applicable). -->
 
-More than 21K claim-evidence pairs with binary labels indicating support/contradiction
+The model was training on more than 21K claim-evidence pairs with binary labels indicating relevance/irrelevance (train.csv).
 
 ### Training Procedure
 
@@ -109,9 +108,9 @@ Best model performance:
 ### Hardware
 
 
-      - RAM: --------------------------at least 16 GB
-      - Storage: ------------------------------at least 2GB,
-      - GPU: -----------------------------V100
+      - RAM: --------------------------at least 4 GB
+      - Storage: ------------------------------at least 1GB,
+      - GPU: ----------------------------- RTX4080 LAPTOP (12G)
 
 ### Software
 
@@ -131,4 +130,4 @@ Limited by the quality and coverage of the word embeddings.
 
 <!-- Any other information that would be useful for other people to know. -->
 
-The model is inspired by the ESIM architecture but with custom implementation. It uses POS tokenizer and supports optional Focus Loss. Parameter selection and learning rate scheduler were inspired by the ESIM repository. Grid search was used for hyperparameter tuning to reach the optimal configuration. The model uses learning rate reduction on plateau based on F1 scores. The best model is saved during training based on development set F1 score. Word embeddings are frozen during training.
+The model is inspired by the (ESIM architecture)[https://arxiv.org/pdf/1609.06038], which considered as the best architecture on NLI task before the transformer architecture was proposed (TODO find evidence paper). It uses the provided POS tokenizer to deal with input texts, and supports optional Focus Loss for training. Parameter selection and learning rate scheduler were inspired by the ESIM repository. Grid search was used for hyperparameter tuning to reach the optimal configuration. The model uses learning rate reduction on plateau based on F1 scores. The best model is saved during training based on development set F1 score. Word embeddings are frozen during training.
