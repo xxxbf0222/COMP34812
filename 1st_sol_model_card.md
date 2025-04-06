@@ -13,8 +13,7 @@ repo: https://github.com/xxxbf0222/COMP34812
 
 <!-- Provide a quick summary of what the model is/does. -->
 
-This is a classification model that was trained to detect whether 
-      a piece of evidence supports or contradicts a given claim.
+This is a classification model based on the ESIM architecture that was trained to detect whether a piece of evidence supports or contradicts a given claim.
 
 
 ## Model Details
@@ -23,20 +22,20 @@ This is a classification model that was trained to detect whether
 
 <!-- Provide a longer summary of what this model is. -->
 
-This model uses a bidirectional LSTM with attention mechanism to classify claim-evidence pairs. It processes both claim and evidence text separately, applies attention between them, and uses difference enhancement for better feature extraction. The model architecture includes embedding layer, BiLSTM encoding, softmax attention, difference enhancement, composition BiLSTM, and max/avg pooling before classification.
+This model implements a variant of the Enhanced Sequential Inference Model (ESIM, Chen et al., 2016) with bidirectional LSTM and attention mechanisms for claim-evidence classification. The model processes claim and evidence text separately through embedding and BiLSTM layers, applies cross-attention between them, and enhances the representation with element-wise difference and multiplication operations. A second BiLSTM composition layer and pooling operations prepare the final representation for classification.
 
 - **Developed by:** Fan Mo and Zixiao Nong
 - **Language(s):** English
 - **Model type:** Supervised
-- **Model architecture:** BiLSTM with Attention
-- **Finetuned from model [optional]:** None (Uses pretrained word2vec-google-news-300 embeddings)
+- **Model architecture:** ESIM-inspired BiLSTM with Attention
+- **Finetuned from model [optional]:** None (Uses pretrained word2vec-google-news-300 embeddings with POS tokenizer)
 
 ### Model Resources
 
 <!-- Provide links where applicable. -->
 
-- **Repository:** None
-- **Paper or documentation:** None
+- **Repository:** https://github.com/coetaur0/ESIM
+- **Paper or documentation:** https://arxiv.org/pdf/1609.06038
 
 ## Training Details
 
@@ -57,7 +56,7 @@ More than 21K claim-evidence pairs with binary labels indicating support/contrad
 
       - batch_size: 10
       - num_epochs: 30
-      - learning_rate: 1e-04
+      - learning_rate: 0.0001
       - hidden_size: 256
       - dropout_rate: 0.5
       - use_focus_loss: False
@@ -97,7 +96,13 @@ A development(validation) set provided, amounting to 6K pairs.
 
 ### Results
 
-The model obtained an F1-score of 80% and an accuracy of 80%.
+Best model performance:
+      - Epoch: 20/30
+      - Training Loss: 0.4609
+      - Training Accuracy: 0.8467
+      - Development Loss: 0.4965
+      - Development Accuracy: 0.8071
+      - Development F1-score: 0.8071
 
 ## Technical Specifications
 
@@ -126,6 +131,4 @@ Limited by the quality and coverage of the word embeddings.
 
 <!-- Any other information that would be useful for other people to know. -->
 
-he model uses learning rate reduction on plateau based on F1 scores.
-      The best model is saved during training based on development set F1 score.
-      Word embeddings are frozen during training.
+The model is inspired by the ESIM architecture but with custom implementation. It uses POS tokenizer and supports optional Focus Loss. Parameter selection and learning rate scheduler were inspired by the ESIM repository. Grid search was used for hyperparameter tuning to reach the optimal configuration. The model uses learning rate reduction on plateau based on F1 scores. The best model is saved during training based on development set F1 score. Word embeddings are frozen during training.
