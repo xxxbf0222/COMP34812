@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score, f1_score
 from torch.utils.data import DataLoader
-from Solution1.data.ClaimEvicenceDataset import ClaimEvidenceLstmDataset
+from Solution1.data.ClaimEvidenceDataset import ClaimEvidenceLstmDataset
 from Solution2.data.ClaimEvidenceTransformerDataset import ClaimEvidenceTransformerDataset
 from Solution1.LstmAttentionClassifier import LstmAttentionClassifier
 from Solution2.TransformerLstmClassifier import BertLstmAttentionClassifier

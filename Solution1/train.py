@@ -5,7 +5,7 @@ from torch.utils.data import DataLoader
 import datetime
 import os
 
-from Solution1.data.ClaimEvicenceDataset import ClaimEvidenceLstmDataset
+from Solution1.data.ClaimEvidenceDataset import ClaimEvidenceLstmDataset
 from Solution1.LstmAttentionClassifier import LstmAttentionClassifier
 from eval import evaluate_model, compute_metrics, plot_training_graph, FocusLoss
 from Solution1.train_config import train_configs
@@ -21,10 +21,10 @@ def train_epoch(model, dataloader, loss_fn, optimizer, device):
     epoch_preds = []
 
     batch_idx = 0
-    # We'll retrieve epoch and epochs from the outer scope inside the loop, so pass them in or use a closure
+    # Retrieve epoch and epochs from the outer scope inside the loop, so pass them in or use a closure
     for batch in dataloader:
         batch_idx += 1
-        
+        print(f"Epoch [{epoch+1}/{epochs}] => batch {batch_idx}/{len(dataloader)}", end='\r')
         # Extract claim/evidence sequences, lengths, and labels, move to training device
         claim_ids = batch["claim"].to(device)
         claim_lens = batch["claim_length"].to(device)

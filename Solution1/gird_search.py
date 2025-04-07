@@ -4,13 +4,13 @@ import subprocess
 # specify a path to save girdsearch result
 default_save_path = "./Solution1/models/girdsearch/"
 
-param_grid = {
+param_gird = {
     "epochs": [20],
     "batch_size": [5,10,20,50,100],
-    "start_lr": [0.0004, 0.0002, 0.0001],
+    "start_lr": [0.0004],
     "hidden_size": [128, 256],
     "dropout_rate": [0.1, 0.3, 0.5],
-    "use_focus_loss": [True, False],
+    "use_focus_loss": [False],
     "save_path": [default_save_path],
     "device": ["cuda"]
 }
@@ -31,8 +31,8 @@ def write_train_config(params_dict):
 if __name__ == "__main__":
 
     # generate all possible param combinations
-    keys = list(param_grid.keys())
-    values = list(param_grid.values())
+    keys = list(param_gird.keys())
+    values = list(param_gird.values())
     param_combinations = list(itertools.product(*values))
     print(f"Got {len(param_combinations)} param combinations.")
 

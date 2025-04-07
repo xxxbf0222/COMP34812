@@ -4,7 +4,7 @@ import subprocess
 # specify a path to save girdsearch result
 default_save_path = "./Solution2/models/girdsearch/"
 
-param_grid = {
+param_gird = {
     'bert_model': ["microsoft/deberta-v3-base"],
     "epochs": [15],
     'lr': [1e-6, 1e-5, 5e-5],
@@ -31,8 +31,8 @@ def write_train_config(params_dict):
 if __name__ == "__main__":
     
     # generate all possible param combinations
-    keys = list(param_grid.keys())
-    values = list(param_grid.values())
+    keys = list(param_gird.keys())
+    values = list(param_gird.values())
     param_combinations = list(itertools.product(*values))
     print(f"Got {len(param_combinations)} param combinations.")
 

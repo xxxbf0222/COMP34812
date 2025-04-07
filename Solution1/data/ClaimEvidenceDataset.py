@@ -54,11 +54,12 @@ class ClaimEvidenceLstmDataset():
         self.tokenizer = tokenizer
         
         # If load-from not provided, load pretrained embeddings for the 'train' set to build vocabulary and embedding mat
-        if pre_trained_embedding:
-            self.pre_trained_embedding = pre_trained_embedding 
-        elif dataset_type == "train":
-            print("Loading 'word2vec-google-news-300' as pretrained word embeddings...")
-            self.pre_trained_embedding = torch.load("./Solution1/data/vocab&embeddings/word2vec-google-news-300.pt", weights_only=False)
+        if dataset_type == "train":
+            if pre_trained_embedding:
+                self.pre_trained_embedding = pre_trained_embedding 
+            else:
+                print("Loading 'word2vec-google-news-300' as pretrained word embeddings...")
+                self.pre_trained_embedding = torch.load("./Solution1/data/vocab&embeddings/word2vec-google-news-300.pt", weights_only=False)
             
         # For train mode, create or initialize a new vocab; for validation/test, must have an existing vocab
         self.vocab = vocab if dataset_type!="train" else {"<unk>":1, "<pad>":0}
