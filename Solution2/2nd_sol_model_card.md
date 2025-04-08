@@ -13,7 +13,9 @@ repo: https://github.com/xxxbf0222/COMP34812
 
 <!-- Provide a quick summary of what the model is/does. -->
 
-This is a fine-tuned DeBERTa model with LSTM and attention mechanism for claim-evidence classification, determining whether a piece of evidence is relevant to a given claim.
+This is a fine-tuned model from [DeBERTa-v3-base](https://huggingface.co/microsoft/deberta-v3-base) with LSTM and attention mechanism for claim-evidence classification, determining whether a piece of evidence is relevant to a given claim.
+
+Access model file here:[./Solution2/models/best.pt](https://livemanchesterac-my.sharepoint.com/:f:/g/personal/fan_mo-4_student_manchester_ac_uk/ElF2ODHq9ltGpS6X-DKbXGMBiuHY-lcjxRYb2Mbyz2hiNA?e=kAXZmw )
 
 
 ## Model Details
@@ -22,13 +24,13 @@ This is a fine-tuned DeBERTa model with LSTM and attention mechanism for claim-e
 
 <!-- Provide a longer summary of what this model is. -->
 
-This model fine-tunes DeBERTa-v3-base and adds a bidirectional LSTM followed by a self-attention layer and classification head. The architecture processes claim-evidence pairs through the transformer encoder, captures sequential dependencies with the LSTM, and uses attention to focus on the most relevant parts of the sequence before final classification. The attention mechanism employs a learnable attention vector to weight token representations, particularly effective for longer sequences.
+This model fine-tunes [DeBERTa-v3-base](https://huggingface.co/microsoft/deberta-v3-base) and adds a bidirectional LSTM followed by a self-attention layer and classification head. The architecture processes claim-evidence pairs through the transformer encoder, captures sequential dependencies with the LSTM, and uses attention to focus on the most relevant parts of the sequence before final classification. The attention mechanism employs a learnable attention vector to weight token representations, particularly effective for longer sequences.
 
-- **Developed by:** Fan Mo and Zixiao Nong
+- **Developed by:** [Fan Mo](https://github.com/xxxbf0222) and [Zixiao Nong](https://github.com/zix1ao)
 - **Language(s):** English
 - **Model type:** Supervised-learning using Transformer architecture
 - **Model architecture:** Transformer-LSTM with Attention
-- **Finetuned from model [optional]:** microsoft/deberta-v3-base
+- **Finetuned from model:** [microsoft/deberta-v3-base](https://huggingface.co/microsoft/deberta-v3-base)
 
 ### Model Resources
 
@@ -64,10 +66,9 @@ The model was trained on more than 21K claim-evidence pairs with binary labels i
 
 <!-- This section provides information about how roughly how long it takes to train the model and the size of the resulting model. -->
 
-TODO
-      - overall training time:  hours
-      - duration per training epoch:  minutes
-      - model size: 
+      - overall training time: 2.8 hours
+      - duration per training epoch:  10.5 minutes
+      - model size: 744.4 MB
 
 ## Evaluation
 
@@ -84,22 +85,28 @@ The development set (dev.csv) is used for indecating model performances, which d
 #### Metrics
 
 <!-- These are the evaluation metrics being used. -->
-
-
-      - Precision
-      - Recall
-      - F1-score
-      - Accuracy
+      - accuracy_score
+      - macro_precision
+      - macro_recall
+      - macro_f1
+      - weighted_macro_precision
+      - weighted_macro_recall
+      - **weighted_mmacro_f1**  (performance indecator in training process)
+      - matthews_corrcoef
 
 ### Results
 
+
 Best model performance:
-      - Epoch: 14/15
-      - Training Loss: 0.0560
-      - Training Accuracy: 0.9829
-      - Development Loss: 0.0993
-      - Development Accuracy: 0.8930
-      - Development F1-score: 0.87
+
+      - accuracy_score: 0.89132635842052
+      - macro_precision: 0.86079804339787
+      - macro_recall: 0.87311140639405
+      - macro_f1: 0.86658365953765
+      - weighted_macro_precision: 0.89366131498043
+      - weighted_macro_recall: 0.89132635842052
+      - weighted_mmacro_f1: 0.89223772742326
+      - matthews_corrcoef: 0.73380614714351
 
 ## Technical Specifications
 
@@ -122,7 +129,9 @@ Best model performance:
 
 <!-- This section is meant to convey both technical and sociotechnical limitations. -->
 
-We only use the development set to test the model performance, which could leads the model overfit to the development set and reduce some general ability. Limited by the maximum sequence length (256 tokens). Model performance may decrease for very long claim-evidence pairs due to truncation. May inherit biases present in the pre-trained DeBERTa model.
+* We only use the development set to test the model performance, which could leads the model overfit to the development set and reduce some general ability. 
+
+* Limited by the maximum sequence length (256 tokens). Model performance may decrease for very long claim-evidence pairs due to truncation. May inherit biases present in the pre-trained DeBERTa model.
 
 ## Additional Information
 
