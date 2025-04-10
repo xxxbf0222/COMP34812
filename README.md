@@ -2,7 +2,8 @@
 
 This repository contains two different solutions for a claim-evidence classification task, which determines whether a piece of evidence is relevant to a given claim. Both approaches implement different neural network architectures, where the first one is traditional deep-learning appreach without Transformer architecture, and the second introduced Transformer.
 
-## Table of Contents
+[Access model file here](https://livemanchesterac-my.sharepoint.com/:f:/g/personal/fan_mo-4_student_manchester_ac_uk/ElF2ODHq9ltGpS6X-DKbXGMBiuHY-lcjxRYb2Mbyz2hiNA?e=kAXZmw )
+
 ## Table of Contents
 - [Project Overview](#project-overview)
 - [Repository Structure](#repository-structure)
