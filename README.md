@@ -589,7 +589,7 @@ def plot_training_graph(train_info_recorder, save_path):
 - Saves `.png` figures to the specified directory:
   - `train_val_loss.png`  
   - `train_val_acc.png`
-- Typically called once training finishes or after each epoch, using a history structure like:
+- Typically called once training finishes, using a train info recorder wit the structure like:
   ```python
   train_info_recorder = [
       { "epoch": 0, "train_loss": ..., "val_loss": ..., "train_acc": ..., "val_acc": ... },
