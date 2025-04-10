@@ -218,7 +218,7 @@ In **Solution1**, the core training logic is in `train.py`. It orchestrates:
 
 ---
 
-### `train_config.py`
+#### `train_config.py`
 
 ```python
 train_configs = {
@@ -277,7 +277,7 @@ train_configs = {
 
 ---
 
-### `gird_search.py`
+#### `gird_search.py`
 
 **`gird_search.py`** automates hyperparameter tuning. It:
 
@@ -440,7 +440,7 @@ Similar to **Solution1**, **Solution2** also uses a dedicated `train_config.py` 
 
 ---
 
-### `train_config.py`
+#### `train_config.py`
 
 ```python
 train_configs = {
@@ -481,7 +481,7 @@ train_configs = {
 
 ---
 
-### `train.py`
+#### `train.py`
 
 Within **Solution2**, `train.py` reads the configuration from **`train_config.py`**, loads the `ClaimEvidenceTransformerDataset` for training and validation, and orchestrates the training loop. Here’s how you can run and customize it:
 
@@ -500,7 +500,7 @@ Within **Solution2**, `train.py` reads the configuration from **`train_config.py
    - **FocusLoss** or **CrossEntropy**: Based on `use_focus_loss` in `train_configs`.  
    - **Training Loop**: Trains for `epochs` epochs, evaluating on the development set each epoch, and saving the best-performing model to `<save_path>/best.pt`.
 
-### `eval.py` – Evaluation Utilities and Interfaces
+#### `eval.py` – Evaluation Utilities and Interfaces
 
 The **`eval.py`** script provides shared functionality for evaluating both **Solution1** (LSTM-Attention) and **Solution2** (DeBERTa+LSTM) models, as well as utilities for prediction, plotting metrics, and saving outputs.
 
