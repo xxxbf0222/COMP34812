@@ -15,6 +15,13 @@ repo: https://github.com/xxxbf0222/COMP34812
 
 This is a claim-evidence classification model based on the ESIM architecture that was trained to detect whether a piece of evidence is relevant to a given claim.
 
+## Download Checkpoint
+
+[Access model file here](https://livemanchesterac-my.sharepoint.com/:f:/g/personal/fan_mo-4_student_manchester_ac_uk/ElF2ODHq9ltGpS6X-DKbXGMBiuHY-lcjxRYb2Mbyz2hiNA?e=kAXZmw )
+
+The model checkpoint is `./Solution1/models/best.pt`, please also download the `pos_vocab.pt` and `pos_embedding_mat.pt` as well for data preprocessing and word embedding. Tutorials for how to use these and run the model, visit [our Github code repository](https://github.com/xxxbf0222/COMP34812).
+
+
 ## Model Details
 
 ### Model Description
@@ -22,8 +29,6 @@ This is a claim-evidence classification model based on the ESIM architecture tha
 <!-- Provide a longer summary of what this model is. -->
 
 This model implements a variant of the [Enhanced Sequential Inference Model ESIM, (Chen et al., 2016)](https://arxiv.org/pdf/1609.06038), which extend the ESIM model from solving Natural Language Inference (NLI) task to the Evidence Detection (ED) task. It combined bidirectional LSTM and attention mechanisms for claim-evidence classification. The model processes claim and evidence text separately through embedding and BiLSTM encoding layers, applies cross-attention between them, and enhances the representation with element-wise difference and multiplication operations. A second BiLSTM composition layer and pooling operations prepare the final representation for classification. 
-
-Access model file here:[./Solution1/models/best.pt](https://livemanchesterac-my.sharepoint.com/:f:/g/personal/fan_mo-4_student_manchester_ac_uk/ElF2ODHq9ltGpS6X-DKbXGMBiuHY-lcjxRYb2Mbyz2hiNA?e=kAXZmw )
 
 
 - **Developed by:** Fan Mo and Zixiao Nong
@@ -45,7 +50,7 @@ This model implements a variant of the [Enhanced Sequential Inference Model ESIM
 <!-- Provide links where applicable. -->
 
 - **Repository:** https://github.com/coetaur0/ESIM
-- **Paper or documentation:** https://arxiv.org/pdf/1609.06038
+- **ESIM Paper:** https://arxiv.org/pdf/1609.06038
 - **Focal Loss:** https://arxiv.org/pdf/1708.02002v2
 
 ## Training Details
@@ -60,9 +65,11 @@ The model was training on more than 21K claim-evidence pairs with binary labels 
 
 <!-- This relates heavily to the Technical Specifications. Content here should link to that section when it is relevant to the training procedure. -->
 
-The model was trained totally on the training set (train.csv), and trained for 30 epochs. Word embeddings are frozen during training. After each epoch, the model runs an evaluation on the development set (dev.csv), and record its accuracy and f1-score. Due to the unbalance in training set, **weighted f1-score** is used as the performace indicator. If the current f1-score is higher than previous epochs, the model will be considered as the current best model, and saved by covering a previous best model. 
+The model was trained totally on the training set ([train.csv](../data/train.csv)), and trained for 13 (out of 30) epochs. Word embeddings are frozen during training. After each epoch, the model runs an evaluation on the development set [dev.csv](../data/dev.csv), and record its accuracy and f1-score. Due to the unbalance in training set, **weighted f1-score** is used as the performace indicator. If the current f1-score is higher than previous epochs, the model will be considered as the current best model, and saved by covering a previous best model. 
 
 Cross Entropy Loss is used by default, but the Focal Loss is also implemented and supported. Since the training data is unbalance, class weights is applied in loss function.
+
+`ReduceLROnPlateau` schedular is used in training. It monitors the f1-score in each epoch. If it observes a decrease in the f1-score from the evaluation during training, it will halve the learning rate to increase the stability of model training
 
 #### Training Hyperparameters
 
@@ -148,10 +155,14 @@ Best model performance:
 
 ### Software
 
-      - Python
-      - PyTorch
-      - Pandas
-      - Numpy
+      - python
+      - matplotlib==3.8.0
+      - nltk==3.8.1
+      - numpy==1.26.4
+      - pandas==1.5.3
+      - scikit_learn==1.2.2
+      - torch==2.6.0
+      - transformers==4.45.2
 
 ## Bias, Risks, and Limitations
 

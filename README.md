@@ -2,7 +2,21 @@
 
 This repository contains two different solutions for a claim-evidence classification task, which determines whether a piece of evidence is relevant to a given claim. Both approaches implement different neural network architectures, where the first one is traditional deep-learning appreach without Transformer architecture, and the second introduced Transformer.
 
-[Access model file here](https://livemanchesterac-my.sharepoint.com/:f:/g/personal/fan_mo-4_student_manchester_ac_uk/ElF2ODHq9ltGpS6X-DKbXGMBiuHY-lcjxRYb2Mbyz2hiNA?e=kAXZmw )
+## How to Install
+To install this code repository, run:
+
+```
+git clone https://github.com/xxxbf0222/COMP34812.git
+```
+
+For dependencies, `cd` to the repository and run:
+
+```
+pip install -r requirements.txt
+```
+
+
+You can try to train your own model by following tutorials below, or [access our model checkpoints here](https://livemanchesterac-my.sharepoint.com/:f:/g/personal/fan_mo-4_student_manchester_ac_uk/ElF2ODHq9ltGpS6X-DKbXGMBiuHY-lcjxRYb2Mbyz2hiNA?e=kAXZmw ).
 
 ## Table of Contents
 - [Project Overview](#project-overview)
@@ -601,8 +615,8 @@ def plot_training_graph(train_info_recorder, save_path):
 ### Use the Model
 
 Interactive demo notebooks are provided for both solutions:
-  - s1_demo.ipynb: Demonstrates the LSTM-Attention model
-  - s2_demo.ipynb: Demonstrates the DeBERTa-LSTM-Attention model
+  - [s1_demo.ipynb](./s1_demo.ipynb): Demonstrates the LSTM-Attention model
+  - [s2_demo.ipynb](./s2_demo.ipynb): Demonstrates the DeBERTa-LSTM-Attention model
 
 Both demo shows how to load models and necessary resources (tokenizer, vocab, embeddings). We also showed two approaches for model prediction: 
 

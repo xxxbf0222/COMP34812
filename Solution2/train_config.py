@@ -4,7 +4,7 @@ train_configs = {
     'start_lr': 1e-5,
     'batch_size': 5,
     'dropout_rate': 0.5,
-    'use_focus_loss': [True, False],
+    'use_focus_loss': True,
     "save_path": "./Solution2/models/", # please keep a '/' in the end
     "device": "cuda",
 }
